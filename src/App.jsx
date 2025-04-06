@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Countries from './Components/Countries/Countries';
 
 
@@ -8,7 +8,9 @@ const countriesPromise = fetch('https://restcountries.com/v3.1/all')
 const App = () => {
   return (
     <div>
-      <Countries countriesPromise={countriesPromise} />
+      <Suspense fallback={<h1 className='text-[#fff] text-center '>Loading.....</h1>}>
+        <Countries countriesPromise={countriesPromise} />
+      </Suspense>
     </div >
   );
 };
